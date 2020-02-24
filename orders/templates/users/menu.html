@@ -1,0 +1,29 @@
+{% extends "users/_base.html" %}
+{% load static %}
+
+{% block body %}
+<main role="main" class="container">
+   <h1 class="alert alert-info p-2 mt-3">Pinnochio’s Pizza Menu</h1> 
+{%for m in menu%}
+
+    <a href="gotoMenu/{{m.title}}">
+    <div class="row p-2 border mb-3" >
+   <div class="col-sm-2">
+   <img class="img-thumbnail img-fluid" src="{% static 'orders/img/' %}{{m.img_name}}" alt="pizza picture" width="100px" height="100px">
+   </div>
+   <div class="col-sm-8 pt-3">
+      <h2 class="bold" style="font-weight: bold;">{{m.title}}</h2>
+   </div>
+    </div>
+</a>
+{%endfor%}
+
+<!-- <ul>
+    {%for topping in PizzaToppings%}
+    <li>{{topping}}</li>
+    {%endfor%}
+</ul> -->
+
+</main>
+
+{% endblock %}

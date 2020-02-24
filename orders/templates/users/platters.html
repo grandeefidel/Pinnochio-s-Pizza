@@ -1,0 +1,35 @@
+{% extends "users/_base.html" %}
+
+
+{% block body %}
+<main role="main" class="container-fluid">
+   <h1 class="alert alert-info p-2 mt-3">Platters</h1> 
+   {% if message %}
+   <div class="alert alert-info">
+       {{ message }}
+   </div>
+{% endif %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col" width="2%">Nr</th>
+            <th scope="col" width="78%">Name</th>
+            <th scope="col" width="10%">Small</th>
+            <th scope="col" width="10%">Large</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item_menu in Platter %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ item_menu }}</td>
+                <td>{{ item_menu.small_price }} USD <a href="/add/platters/{{ item_menu.id }}/small/0"><i class="fas fa-plus-circle"></i></a></td>
+                <td>{{ item_menu.large_price }} USD <a href="/add/platters/{{ item_menu.id }}/large/0"><i class="fas fa-plus-circle"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock %}

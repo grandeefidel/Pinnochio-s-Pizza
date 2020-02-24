@@ -1,0 +1,128 @@
+{% extends "users/_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<main role="main" class="container">
+   <h1 class="alert alert-info p-2 mt-3">{{RegularPizza.name}} Pizza</h1> 
+   {% if message %}
+   <div class="alert alert-info">
+       {{ message }}
+   </div>
+{% endif %}
+
+<div class="row p-2 mb-3" >
+   <div class="col-md-4 mb-3">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">1 Topping</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{RegularPizza.name}}</h6>
+          <p class="card-text">Some quick with one of the toppings of your choice.</p>
+          <a href="#" class="card-link">Small: ${{RegularPizza.small_0}}</a>
+          <a href="#" class="card-link">Large: ${{RegularPizza.large_0}}</a>
+          <div class="row">
+          <div class="col-12">
+            <h4> Order pizza:</h4>
+            <form method="POST" action="{% url 'orderPizza' %}">
+                {% csrf_token %}
+                {{ form_pizza|crispy }}
+                <input type="hidden" name="no_of_toppings" value="1">
+                <input type="hidden" name="pizzatype" value="{{RegularPizza.name}}">
+                <input type="submit" value="Save"/>
+            </form>
+        </div>
+        </div>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-4 mb-3">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">2 toppings</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{RegularPizza.name}}</h6>
+          <p class="card-text">Some quick with two of the toppings of your choice.</p>
+          <a href="#" class="card-link">Small: ${{RegularPizza.small_1}}</a>
+          <a href="#" class="card-link">Large: ${{RegularPizza.large_1}}</a>
+          <div class="row">
+            <div class="col-12">
+              <h4> Order pizza:</h4>
+              <form method="POST"  action="{% url 'orderPizza' %}">
+                  {% csrf_token %}
+                  {{ form_pizza|crispy }}
+                  <input type="hidden" name="no_of_toppings" value="2">
+                  <input type="hidden" name="pizzatype" value="{{RegularPizza.name}}">
+                  <input type="submit" value="Save"/>
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-4 mb-3" action="{% url 'orderPizza' %}">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">3 toppings</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{RegularPizza.name}}</h6>
+          <p class="card-text">Some quick with three of the toppings of your choice.</p>
+          <a href="#" class="card-link">Small: ${{RegularPizza.small_2}}</a>
+          <a href="#" class="card-link">Large: ${{RegularPizza.large_2}}</a>
+          <div class="row">
+            <div class="col-12">
+              <h4> Order pizza:</h4>
+              <form method="POST"  action="{% url 'orderPizza' %}">
+                  {% csrf_token %}
+                  {{ form_pizza|crispy }}
+                  <input type="hidden" name="no_of_toppings" value="3">
+                  <input type="hidden" name="pizzatype" value="{{RegularPizza.name}}">
+                  <input type="submit" value="Save"/>
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-4 mb-3">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">Special</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{RegularPizza.name}}</h6>
+          <p class="card-text">Special pizza with 4 of the toppings of your choice.</p>
+          <a href="#" class="card-link">Small: ${{RegularPizza.small_3}}</a>
+          <a href="#" class="card-link">Large: ${{RegularPizza.large_3}}</a>
+          <div class="row">
+            <div class="col-12">
+              <h4> Order pizza:</h4>
+              <form method="POST" action="{% url 'orderPizza' %}">
+                  {% csrf_token %}
+                  {{ form_pizza|crispy }}
+                  <input type="hidden" name="no_of_toppings" value="4">
+                  <input type="hidden" name="pizzatype" value="{{RegularPizza.name}}">
+                  <input type="submit" value="Save"/>
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-4 mb-3">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">Cheese</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{RegularPizza.name}}</h6>
+          <p class="card-text">Sweet Pizza with cheese</p>
+          <a href="#" class="card-link">Small: ${{RegularPizza.small_4}}</a>
+          <a href="#" class="card-link">Large: ${{RegularPizza.large_4}}</a>
+          <form method="POST" action="{% url 'orderPizza' %}">
+            {% csrf_token %}
+            {{ form_pizza|crispy }}
+            <input type="hidden" name="no_of_toppings" value="0">
+            <input type="hidden" name="pizzatype" value="{{RegularPizza.name}}">
+            <input type="submit" value="Save"/>
+        </form>
+        </div>
+      </div>
+   </div>
+</div>
+</main>
+
+{% endblock %}

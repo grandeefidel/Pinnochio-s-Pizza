@@ -31,7 +31,7 @@ As Pinnochio’s Pizza staff, you can also:
 
  
 
-Within admin panel, there is possibility of:
+Within admin panel, there are options to:
 
 * managing registered users
 
